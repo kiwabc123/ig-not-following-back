@@ -1,0 +1,23 @@
+<!-- Node.js TypeScript Project Setup Instructions -->
+
+- [x] Verify that the copilot-instructions.md file in the .github directory is created.
+- [x] Clarify Project Requirements
+- [x] Scaffold the Project
+  - Created package.json with TypeScript and Node.js dependencies
+  - Created tsconfig.json with appropriate compiler options
+  - Created src/index.ts with the Instagram follower analysis script
+- [x] Customize the Project
+  - Added development and build scripts
+  - Configured TypeScript for ES2020 target
+- [x] Install Required Extensions
+  - No specific VS Code extensions required for this project
+- [x] Compile the Project
+  - Project compiled successfully with TypeScript compiler
+  - Generated dist/ folder with transpiled JavaScript
+- [x] Create and Run Task
+  - npm scripts ready: build, start, dev
+- [x] Launch the Project
+  - Ready to run with `npm run dev` for development
+- [x] Ensure Documentation is Complete
+  - README.md created with setup and usage instructions
+  - copilot-instructions.md completed
