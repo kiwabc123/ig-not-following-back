@@ -1,22 +1,26 @@
 {
   "name": "follower-lost",
-  "version": "1.0.0",
-  "description": "Instagram follower analysis tool",
-  "main": "dist/index.js",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "dev": "ts-node src/index.ts"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
   },
-  "keywords": [
-    "instagram",
-    "followers"
-  ],
-  "author": "",
-  "license": "MIT",
+  "dependencies": {
+    "next": "16.2.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
   "devDependencies": {
-    "@types/node": "^20.19.35",
-    "ts-node": "^10.9.0",
-    "typescript": "^5.0.0"
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }

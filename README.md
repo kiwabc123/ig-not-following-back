@@ -1,57 +1,34 @@
-# Follower Lost
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Instagram follower analysis tool for finding accounts you follow that do not follow you back.
+## Getting Started
 
-## Requirements
-
-- Node.js 18+
-- Instagram export files:
-  - `followers_1.json`
-  - `following.json`
-
-## Install
-
-```bash
-npm install
-```
-
-## Data Folder
-
-The script auto-detects your export folder from common locations (including Desktop paths), or you can set it explicitly with `IG_DATA_DIR`.
-
-PowerShell example:
-
-```powershell
-$env:IG_DATA_DIR = "C:\Users\<you>\Desktop\connections\followers_and_following"
-npm run dev
-```
-
-## Run
-
-Development:
+First, run the development server:
 
 ```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Build:
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```bash
-npm run build
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-Run built output:
+## Learn More
 
-```bash
-npm run start
-```
+To learn more about Next.js, take a look at the following resources:
 
-## What it does
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-1. Reads follower and following data from Instagram export JSON files.
-2. Compares usernames.
-3. Prints accounts that are not following you back.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Privacy
+## Deploy on Vercel
 
-Keep Instagram export data out of version control. If you place export folders inside this repo, ensure they are listed in `.gitignore`.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
