@@ -17,14 +17,14 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
 
   const extractFollower = (user: any): IGUser | null => {
-    const username = user?.string_list_data?.[0]?.value;
+    const username = user?.string_list_data?.[0]?.value?.trim();
     const href = user?.string_list_data?.[0]?.href;
     if (!username || !href) return null;
     return { username, href };
   };
 
   const extractFollowing = (user: any): IGUser | null => {
-    const username = user?.string_list_data?.[0]?.value;
+    const username = user?.title?.trim();
     const href = user?.string_list_data?.[0]?.href;
     if (!username || !href) return null;
     return { username, href };
