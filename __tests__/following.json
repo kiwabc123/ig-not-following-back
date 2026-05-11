@@ -1,0 +1,36 @@
+{
+  "relationships_following": [
+    {
+      "title": "user1",
+      "string_list_data": [
+        {
+          "href": "https://www.instagram.com/user1/"
+        }
+      ]
+    },
+    {
+      "title": "user2",
+      "string_list_data": [
+        {
+          "href": "https://www.instagram.com/user2/"
+        }
+      ]
+    },
+    {
+      "title": "user4",
+      "string_list_data": [
+        {
+          "href": "https://www.instagram.com/user4/"
+        }
+      ]
+    },
+    {
+      "title": "user5",
+      "string_list_data": [
+        {
+          "href": "https://www.instagram.com/user5/"
+        }
+      ]
+    }
+  ]
+}
