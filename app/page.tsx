@@ -24,7 +24,7 @@ export default function Home() {
   };
 
   const extractFollowing = (user: any): IGUser | null => {
-    const username = user?.title;
+    const username = user?.string_list_data?.[0]?.value;
     const href = user?.string_list_data?.[0]?.href;
     if (!username || !href) return null;
     return { username, href };
