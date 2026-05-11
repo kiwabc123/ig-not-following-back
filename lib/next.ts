@@ -13,9 +13,9 @@ export function findUnfollowedFollowers(
   followers: IGUser[],
   following: IGUser[]
 ): IGUser[] {
-  const followingSet = new Set(following.map((u) => u.username));
+  const followingSet = new Set(following.map((u) => u.username.toLowerCase()));
 
-  return followers.filter((user) => !followingSet.has(user.username));
+  return followers.filter((user) => !followingSet.has(user.username.toLowerCase()));
 }
 
 /**
@@ -28,9 +28,9 @@ export function findNotFollowingBack(
   followers: IGUser[],
   following: IGUser[]
 ): IGUser[] {
-  const followerSet = new Set(followers.map((u) => u.username));
+  const followerSet = new Set(followers.map((u) => u.username.toLowerCase()));
 
-  return following.filter((user) => !followerSet.has(user.username));
+  return following.filter((user) => !followerSet.has(user.username.toLowerCase()));
 }
 
 /**
