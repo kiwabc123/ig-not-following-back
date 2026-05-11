@@ -125,6 +125,14 @@ export default function Home() {
           {/* File Upload Section */}
           <div className="bg-white rounded-lg shadow-lg p-8 mb-8 max-w-2xl mx-auto">
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Upload Your Data</h2>
+            
+            <div className="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-4 mb-6">
+              <p className="text-yellow-800 font-semibold mb-2">⚠️ Important: Upload ALL Files</p>
+              <p className="text-yellow-700 text-sm">
+                Instagram splits your followers across multiple files. You MUST upload ALL <code className="bg-yellow-100 px-1 rounded">followers_*.json</code> files plus <code className="bg-yellow-100 px-1 rounded">following.json</code> for accurate results.
+              </p>
+            </div>
+            
             <p className="text-gray-600 mb-6">
               Download your Instagram data from Settings → Account → Download your information, 
               then upload <code className="bg-gray-100 px-2 py-1 rounded">following.json</code> and all <code className="bg-gray-100 px-2 py-1 rounded">followers_*.json</code> files (followers_1.json, followers_2.json, etc.).
