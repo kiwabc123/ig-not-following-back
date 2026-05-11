@@ -27,17 +27,33 @@ function generateSummary(followers, following) {
 
 const testDir = __dirname;
 
-// Load test data
-const followersRaw = JSON.parse(
-  fs.readFileSync(path.join(testDir, 'followers_1.json'), 'utf-8')
-);
+// Load all followers files (followers_1.json, followers_2.json, etc.)
+console.log('\n=== EXTRACTING FOLLOWERS (All Files) ===');
+const followersRaw = [];
+let fileIndex = 1;
 
+while (true) {
+  const filename = `followers_${fileIndex}.json`;
+  const filepath = path.join(testDir, filename);
+  
+  if (!fs.existsSync(filepath)) {
+    break;
+  }
+  
+  console.log(`📄 Loading ${filename}...`);
+  const data = JSON.parse(fs.readFileSync(filepath, 'utf-8'));
+  followersRaw.push(...data);
+  fileIndex++;
+}
+
+console.log(`✅ Found ${fileIndex - 1} followers file(s)`);
+
+// Load following data
 const followingRaw = JSON.parse(
   fs.readFileSync(path.join(testDir, 'following.json'), 'utf-8')
 );
 
-// Extract followers with detailed logging
-console.log('\n=== EXTRACTING FOLLOWERS ===');
+// Extract all followers with detailed logging
 const followers = followersRaw
   .map((user, index) => {
     const username = user?.string_list_data?.[0]?.value?.trim();
@@ -112,4 +128,5 @@ fs.writeFileSync(
 );
 
 console.log('\n✅ Detailed results saved to results.json');
+
 

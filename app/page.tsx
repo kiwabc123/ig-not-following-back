@@ -33,7 +33,7 @@ export default function Home() {
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files || files.length < 2) {
-      setError('Please upload both followers_1.json and following.json files');
+      setError('Please upload following.json and all followers_*.json files');
       return;
     }
 
@@ -41,29 +41,37 @@ export default function Home() {
     setError(null);
 
     try {
-      let followersFile: File | null = null;
+      const followersFiles: File[] = [];
       let followingFile: File | null = null;
 
+      // Separate followers and following files
       for (let i = 0; i < files.length; i++) {
-        if (files[i].name === 'followers_1.json') {
-          followersFile = files[i];
+        if (files[i].name.match(/^followers_\d+\.json$/)) {
+          followersFiles.push(files[i]);
         } else if (files[i].name === 'following.json') {
           followingFile = files[i];
         }
       }
 
-      if (!followersFile || !followingFile) {
-        setError('Please upload both followers_1.json and following.json files');
+      if (followersFiles.length === 0 || !followingFile) {
+        setError('Please upload following.json and at least followers_1.json');
         setLoading(false);
         return;
       }
 
-      const [followersText, followingText] = await Promise.all([
-        followersFile.text(),
-        followingFile.text(),
-      ]);
+      // Read all files
+      const followersTexts = await Promise.all(
+        followersFiles.map((f) => f.text())
+      );
+      const followingText = await followingFile.text();
 
-      const followersRaw = JSON.parse(followersText);
+      // Merge all followers data
+      const followersRaw: any[] = [];
+      followersTexts.forEach((text) => {
+        const data = JSON.parse(text);
+        followersRaw.push(...data);
+      });
+
       const followingRaw = JSON.parse(followingText);
 
       const followers: IGUser[] = followersRaw
@@ -119,7 +127,7 @@ export default function Home() {
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Upload Your Data</h2>
             <p className="text-gray-600 mb-6">
               Download your Instagram data from Settings → Account → Download your information, 
-              then upload both <code className="bg-gray-100 px-2 py-1 rounded">followers_1.json</code> and <code className="bg-gray-100 px-2 py-1 rounded">following.json</code> files.
+              then upload <code className="bg-gray-100 px-2 py-1 rounded">following.json</code> and all <code className="bg-gray-100 px-2 py-1 rounded">followers_*.json</code> files (followers_1.json, followers_2.json, etc.).
             </p>
             
             <label className="block mb-6">
@@ -137,7 +145,7 @@ export default function Home() {
                   <p className="text-lg font-semibold text-gray-700">
                     {loading ? 'Processing...' : 'Click to upload or drag files'}
                   </p>
-                  <p className="text-sm text-gray-500 mt-2">followers_1.json and following.json</p>
+                  <p className="text-sm text-gray-500 mt-2">following.json + all followers_*.json files</p>
                 </label>
               </div>
             </label>
