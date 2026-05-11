@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Personal Instagram data (don't commit)
+__tests__/followers_*.json
+__tests__/following.json
+__tests__/results.json
+__tests__/comparison-results.json
+followers_and_following/
+
